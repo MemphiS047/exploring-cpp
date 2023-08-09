@@ -1,3 +1,9 @@
+# Ignore TODO
+TODO.md
+
+# Ignoring .env files
+.env 
+
 # Prerequisites
 *.d
 
