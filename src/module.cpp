@@ -4,6 +4,16 @@
 #include <string>
 #include <cstring>
 
+Module::Module(string name)
+{
+    this->name = name;
+    this->moduleID = generateModuleID();
+}
+
+Module::Module() {}
+
+Module::~Module() {}
+
 string Module::generateModuleID()
 {
     time_t curr_t;
@@ -30,16 +40,12 @@ string Module::generateModuleID()
         }
         return formattedName;
     };
+
     this->name = this->name + day + month + year;
     return formatName(Module::name);
 }
 
-Module::Module(string name)
-{
-    this->name = name;
-    this->moduleID = generateModuleID();
+void Module::printModuleInfo(){
+    cout << this->name << endl;
+    cout << this->moduleID << endl;
 }
-
-Module::Module() {}
-
-Module::~Module() {}
