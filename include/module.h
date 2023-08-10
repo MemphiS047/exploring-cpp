@@ -1,13 +1,17 @@
 #include <iostream>
 #include <string>
-
+#include <vector>
 
 using namespace std;
 
+#ifndef MODULE_H
+#define MODULE_H
+
 class Module {
-    
+
 public:
     Module(string name);
+    Module();
     ~Module();
 
     // Get functions
@@ -38,15 +42,18 @@ public:
 
 private:
     // Module static meta-data
-    static string name;
     static string moduleID;
     static string moduleDescription;
     static string moduleVersion;
     static string moduleAuthor;
+    string name;
     string moduleUpTime;
     string moduleCompileInstruction;
     string moduleCreationDate;
     string moduleLastModifiedDate;
+    
+    // Module dynamic data
+    vector<Module> mountedModules;
 
     // Memory Profiling
     string memoryAllocation;
@@ -64,3 +71,5 @@ private:
     string moduleCacheUtilization;
     string moduleInstructionTable;
 };
+
+#endif
