@@ -1,0 +1,26 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/c/Users/hakve/workspace/github/exploring-cpp/include/module.h
+iostream
+-
+string
+-
+vector
+-
+
+/mnt/c/Users/hakve/workspace/github/exploring-cpp/src/module.cpp
+./../include/module.h
+/mnt/c/Users/hakve/workspace/github/exploring-cpp/include/module.h
+ctime
+-
+string
+-
+cstring
+-
+

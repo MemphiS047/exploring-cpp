@@ -24,14 +24,14 @@ string Module::generateModuleID()
                 formattedName += name[i];
             }
         }
-        for (int i = 1; i < formattedName.length(); i++)
+        for (int i = 0; i < formattedName.length(); i++)
         {
             formattedName[i] = tolower(formattedName[i]);
         }
         return formattedName;
     };
-    this->name = formatName(Module::name);
-    this->name = this->name + " " + day + month + year;
+    this->name = this->name + day + month + year;
+    return formatName(Module::name);
 }
 
 Module::Module(string name)
@@ -40,12 +40,6 @@ Module::Module(string name)
     this->moduleID = generateModuleID();
 }
 
-Module::Module()
-{
-    cout << "Default constructor called" << endl;
-}
+Module::Module() {}
 
-Module::~Module()
-{
-    cout << "Module " << this->name << " has been destroyed" << endl;
-}
+Module::~Module() {}

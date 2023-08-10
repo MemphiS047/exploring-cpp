@@ -42,11 +42,11 @@ public:
 
 private:
     // Module static meta-data
-    static string moduleID;
-    static string moduleDescription;
-    static string moduleVersion;
-    static string moduleAuthor;
     string name;
+    string moduleID;
+    string moduleDescription;
+    string moduleVersion;
+    string moduleAuthor;
     string moduleUpTime;
     string moduleCompileInstruction;
     string moduleCreationDate;

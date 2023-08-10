@@ -1,0 +1,5 @@
+/mnt/c/Users/hakve/workspace/github/exploring-cpp/CMakeFiles/rebuild_cache.dir
+/mnt/c/Users/hakve/workspace/github/exploring-cpp/CMakeFiles/edit_cache.dir
+/mnt/c/Users/hakve/workspace/github/exploring-cpp/CMakeFiles/ui.dir
+/mnt/c/Users/hakve/workspace/github/exploring-cpp/CMakeFiles/module.dir
+/mnt/c/Users/hakve/workspace/github/exploring-cpp/CMakeFiles/main.dir
