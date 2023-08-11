@@ -1,11 +1,12 @@
-// #include "./include/module.h"
-#include "./include/config.h"
+#include "config.h"
 #include "module.h"
-#include <ctime>
+#include "stdio.h"
 
+#include <ctime>
 #include <iostream>
 
 int main() {
     Module module("Bubble Sort Algorithm");
+    module.printModuleInfo();
     return 0;
 }

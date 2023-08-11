@@ -6,17 +6,19 @@
 
 #IncludeRegexTransform: 
 
-/mnt/c/Users/hakve/workspace/github/exploring-cpp/include/config.h
-
 /mnt/c/Users/hakve/workspace/github/exploring-cpp/main.cpp
-./include/config.h
-/mnt/c/Users/hakve/workspace/github/exploring-cpp/include/config.h
+config.h
+/mnt/c/Users/hakve/workspace/github/exploring-cpp/config.h
 module.h
 /mnt/c/Users/hakve/workspace/github/exploring-cpp/module.h
+stdio.h
+/mnt/c/Users/hakve/workspace/github/exploring-cpp/stdio.h
 ctime
 -
 iostream
 -
+
+include/config.h
 
 include/module.h
 iostream

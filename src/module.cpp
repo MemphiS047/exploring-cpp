@@ -6,16 +6,26 @@
 
 Module::Module(string name)
 {
+    time_t curr_t;
+    time(&curr_t);
+    struct tm *local_time = localtime(&curr_t);
+    string timestamp = to_string(local_time->tm_year + 1900) + 
+                       to_string(local_time->tm_mon + 1) + 
+                       to_string(local_time->tm_mday);
+
     this->name = name;
     this->moduleID = generateModuleID();
+    this->moduleCreationDate = timestamp;
+    this->moduleLastModifiedDate = timestamp;
+    this->moduleVersion = "v0.0";
+
 }
 
 Module::Module() {}
 
 Module::~Module() {}
 
-string Module::generateModuleID()
-{
+string Module::generateModuleID() {
     time_t curr_t;
     time(&curr_t);
     struct tm *local_time = localtime(&curr_t);
@@ -40,12 +50,13 @@ string Module::generateModuleID()
         }
         return formattedName;
     };
-
-    this->name = this->name + day + month + year;
-    return formatName(Module::name);
+    return formatName(this->name + day + month + year);
 }
 
-void Module::printModuleInfo(){
-    cout << this->name << endl;
-    cout << this->moduleID << endl;
+void Module::printModuleInfo() {
+    cout << "Module name: " << this->name << endl;
+    cout << "Module ID: " << this->moduleID << endl;
+    cout << "Module creation time: " << this->moduleCreationDate << endl;
+    cout << "Module last modified: " << this->moduleLastModifiedDate << endl;
+    cout << "Module version: " << this->moduleVersion << endl;
 }
