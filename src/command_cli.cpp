@@ -11,6 +11,13 @@ CreateModuleCommand::CreateModuleCommand(Module *module) : Command(module) {}
 
 void CreateModuleCommand::execute()
 {
+    time_t curr_t;
+    time(&curr_t);
+    struct tm *local_time = localtime(&curr_t);
+    string timestamp = to_string(local_time->tm_year + 1900) + 
+                       to_string(local_time->tm_mon + 1) + 
+                       to_string(local_time->tm_mday);
+
     string moduleName;
     string moduleDescription;
     string moduleAuthor;
@@ -29,8 +36,13 @@ void CreateModuleCommand::execute()
     module->setName(moduleName);
     module->setModuleDescription(moduleDescription);
     module->setModuleAuthor(moduleAuthor);
+    module->setModuleID(module->generateModuleID());
+    module->setModuleVersion("v0.0");
+    module->setModuleCreationDate(timestamp);
+    module->setModuleLastModifiedDate(timestamp);
 }
 
+// Command Invoker
 void CommandInvoker::addCommand(string commandName, Command *cmd)
 {
     commandMap[commandName] = cmd;

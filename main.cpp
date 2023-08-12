@@ -7,22 +7,25 @@
 #include <iostream>
 
 int main() {
-    Module module("Bubble Sort Algorithm");
-    module.printModuleInfo();
+    // Module module("Bubble Sort Algorithm");
+    // module.printModuleInfo();
     
-    // Module module;
-    // // Create command objects
+    Module module;
+    // Create command objects
 
-    // Command *createModuleCommand = new CreateModuleCommand(&module);
+    Command *createModuleCommand = new CreateModuleCommand(&module);
 
-    // // Create invoker
-    // CommandInvoker invoker;
-    // invoker.addCommand("createproject", createModuleCommand);
+    // Create invoker
+    CommandInvoker invoker;
+    invoker.addCommand("createproject", createModuleCommand);
 
-    // // Execute commands
-    // invoker.executeCommand("createproject");
+    // Execute commands
+    invoker.executeCommand("createproject");
 
-    // // Clean up
-    // delete createModuleCommand;
+    // Print module info
+    module.printModuleInfo();
+
+    // Clean up
+    delete createModuleCommand;
     return 0;
 }

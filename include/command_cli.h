@@ -28,13 +28,13 @@ public:
 class CommandInvoker
 {
 private:
-    std::vector<Command *> commands;
-    std::map<std::string, Command *> commandMap;
+    vector<Command *> commands;
+    map<string, Command *> commandMap;
 
 public:
-    void addCommand(std::string commandName, Command *cmd);
+    void addCommand(string commandName, Command *cmd);
     void executeCommands();
-    void executeCommand(std::string commandName);
+    void executeCommand(string commandName);
 };
 
 #endif // COMMAND_H

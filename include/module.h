@@ -22,10 +22,6 @@ public:
     string getModuleMemoryProfiling();
     string getModuleCPUProfiling();
 
-    // Set functions
-    void setName(string name);
-    void setModuleID(string moduleID);
-
     // Utility functions
     string generateModuleID();
 
@@ -42,11 +38,15 @@ public:
     void printModuleInfo();
 
     // Set functions
+    void setName(string name);
     void setModuleDescription(string moduleDescription);
     void setModuleVersion(string moduleVersion);
     void setModuleAuthor(string moduleAuthor);
     void setModuleUpTime(string moduleUpTime);
     void setModuleCompileInstruction(string moduleCompileInstruction);
+    void setModuleID(string moduleID);
+    void setModuleCreationDate(string moduleCreationDate);
+    void setModuleLastModifiedDate(string moduleLastModifiedDate);
 
 private:
     // Module static meta-data

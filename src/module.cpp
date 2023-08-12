@@ -72,3 +72,7 @@ void Module::setModuleID(string moduleID) { this->moduleID = moduleID; }
 void Module::setModuleDescription(string moduleDescription) { this->moduleDescription = moduleDescription; }
 void Module::setModuleVersion(string moduleVersion) { this->moduleVersion = moduleVersion; }
 void Module::setModuleAuthor(string moduleAuthor) { this->moduleAuthor = moduleAuthor; }
+void Module::setModuleUpTime(string moduleUpTime) { this->moduleUpTime = moduleUpTime; }
+void Module::setModuleCompileInstruction(string moduleCompileInstruction) { this->moduleCompileInstruction = moduleCompileInstruction; }
+void Module::setModuleCreationDate(string moduleCreationDate) { this->moduleCreationDate = moduleCreationDate; }
+void Module::setModuleLastModifiedDate(string moduleLastModifiedDate) { this->moduleLastModifiedDate = moduleLastModifiedDate; }
