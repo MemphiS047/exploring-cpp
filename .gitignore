@@ -1,5 +1,5 @@
 # Ignore build files
-CMakeFiles
+/CMakeFiles
 main
 
 # Ignore TODO

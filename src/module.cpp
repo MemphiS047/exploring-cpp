@@ -4,6 +4,7 @@
 #include <string>
 #include <cstring>
 
+// Constructor with name parameter
 Module::Module(string name)
 {
     time_t curr_t;
@@ -21,10 +22,13 @@ Module::Module(string name)
 
 }
 
+// Default constructor
 Module::Module() {}
 
+// Destructor
 Module::~Module() {}
 
+// Generates module ID using name and current date
 string Module::generateModuleID() {
     time_t curr_t;
     time(&curr_t);
@@ -53,6 +57,7 @@ string Module::generateModuleID() {
     return formatName(this->name + day + month + year);
 }
 
+// Shows overview of the referenced module instance
 void Module::printModuleInfo() {
     cout << "Module name: " << this->name << endl;
     cout << "Module ID: " << this->moduleID << endl;
@@ -60,3 +65,10 @@ void Module::printModuleInfo() {
     cout << "Module last modified: " << this->moduleLastModifiedDate << endl;
     cout << "Module version: " << this->moduleVersion << endl;
 }
+
+// Set functions
+void Module::setName(string name) { this->name = name; }
+void Module::setModuleID(string moduleID) { this->moduleID = moduleID; }
+void Module::setModuleDescription(string moduleDescription) { this->moduleDescription = moduleDescription; }
+void Module::setModuleVersion(string moduleVersion) { this->moduleVersion = moduleVersion; }
+void Module::setModuleAuthor(string moduleAuthor) { this->moduleAuthor = moduleAuthor; }
