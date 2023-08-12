@@ -4,7 +4,7 @@
 
 #include "map"
 #include "module.h"
-#include "ui.h"
+// #include "ui.h"
 
 using namespace std;
 
@@ -13,10 +13,10 @@ class Command
 {
 protected:
     Module *module;
-    UI *ui;
+    // UI *ui;
 
 public:
-    Command(Module *module, UI *ui) : module(module) {}
+    // Command(Module *module, UI *ui) : module(module) {}
     Command(Module *module) : module(module) {}
     virtual ~Command() {}
     virtual void execute() = 0;
@@ -45,8 +45,8 @@ public:
         cin >> moduleAuthor;
 
         module->setName(moduleName);
-        module->setModuleDescription(moduleDescription);
-        module->setModuleAuthor(moduleAuthor);
+        // module->setModuleDescription(moduleDescription);
+        // module->setModuleAuthor(moduleAuthor);
     }
 };
 
