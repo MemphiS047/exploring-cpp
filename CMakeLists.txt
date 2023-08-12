@@ -22,10 +22,10 @@ add_library(module ./src/module.cpp)
 add_library(ui ./src/ui.cpp)
 add_library(command_cli ./src/command_cli.cpp)
 
-# Adding subdirectories
-# add_subdirectory(src)
-# add_subdirectory(include)
-# add_subdirectory(lib)
+# Specfiying include directories
+target_include_directories(module PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include") 
+target_include_directories(ui PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")     
+target_include_directories(command_cli PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")  
 
 # Linking libraries
 target_link_libraries(main PUBLIC module ui command_cli)

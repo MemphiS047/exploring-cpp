@@ -6,5 +6,13 @@ then
     ./main
     exit 0
 fi
+
+if [ $2 == "clean" ]
+then
+    echo "Removing build files..."
+    rm -rf CMakeFiles/
+    cmake .
+    exit 0
+fi
 make
 ./main

@@ -1,13 +1,14 @@
+#ifndef MODULE_H
+#define MODULE_H
+
 #include <iostream>
 #include <string>
 #include <vector>
 
 using namespace std;
 
-#ifndef MODULE_H
-#define MODULE_H
-
-class Module {
+class Module
+{
 
 public:
     Module(string name);
@@ -27,18 +28,25 @@ public:
 
     // Utility functions
     string generateModuleID();
-    
+
     // Mounts the module related source code to the module object and returns the module ID
-    // mounted modules later on can be used to do memory profiling, CPU profiling and run time info 
+    // mounted modules later on can be used to do memory profiling, CPU profiling and run time info
     string mountModule();
 
     // Unmounts the module from the system and returns the module ID, freeing up CPU load and memory
     // all the mounting and unmounting actions are recorded in a system log file or a database
     string unmountModule();
 
-    // Prints the project meta-data (run time info, such as uptime) and static module information 
+    // Prints the project meta-data (run time info, such as uptime) and static module information
     // (such as module name, module ID, etc.)
     void printModuleInfo();
+
+    // Set functions
+    void setModuleDescription(string moduleDescription);
+    void setModuleVersion(string moduleVersion);
+    void setModuleAuthor(string moduleAuthor);
+    void setModuleUpTime(string moduleUpTime);
+    void setModuleCompileInstruction(string moduleCompileInstruction);
 
 private:
     // Module static meta-data
@@ -51,7 +59,7 @@ private:
     string moduleCompileInstruction;
     string moduleCreationDate;
     string moduleLastModifiedDate;
-    
+
     // Module dynamic data
     vector<Module> mountedModules;
 

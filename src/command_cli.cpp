@@ -1,79 +1,50 @@
-#include <iostream>
-#include <string>
-#include <vector>
-
-#include "map"
+#include "command_cli.h"
 #include "module.h"
-// #include "ui.h"
 
 using namespace std;
 
-// Command interface
-class Command
+Command::Command(Module *module) : module(module) {}
+
+Command::~Command() {}
+
+CreateModuleCommand::CreateModuleCommand(Module *module) : Command(module) {}
+
+void CreateModuleCommand::execute()
 {
-protected:
-    Module *module;
-    // UI *ui;
+    string moduleName;
+    string moduleDescription;
+    string moduleAuthor;
 
-public:
-    // Command(Module *module, UI *ui) : module(module) {}
-    Command(Module *module) : module(module) {}
-    virtual ~Command() {}
-    virtual void execute() = 0;
-};
+    cout << "Creating a new project..." << endl;
 
-// Create module command classes
-class CreateModuleCommand : public Command
+    cout << "Enter module name: ";
+    cin >> moduleName;
+
+    cout << "Enter module description: ";
+    cin >> moduleDescription;
+
+    cout << "Enter module author: ";
+    cin >> moduleAuthor;
+
+    module->setName(moduleName);
+    module->setModuleDescription(moduleDescription);
+    module->setModuleAuthor(moduleAuthor);
+}
+
+void CommandInvoker::addCommand(string commandName, Command *cmd)
 {
-public:
-    CreateModuleCommand(Module *module) : Command(module) {}
-    void execute() override
-    {
-        string moduleName;
-        string moduleDescription;
-        string moduleAuthor;
+    commandMap[commandName] = cmd;
+}
 
-        cout << "Creating a new project..." << endl;
-
-        cout << "Enter module name: ";
-        cin >> moduleName;
-
-        cout << "Enter module description: ";
-        cin >> moduleDescription;
-
-        cout << "Enter module author: ";
-        cin >> moduleAuthor;
-
-        module->setName(moduleName);
-        // module->setModuleDescription(moduleDescription);
-        // module->setModuleAuthor(moduleAuthor);
-    }
-};
-
-// Invoker class
-class CommandInvoker
+void CommandInvoker::executeCommands()
 {
-private:
-    vector<Command *> commands;
-    map<string, Command *> commandMap;
-
-public:
-    void addCommand(string commandName, Command *cmd)
+    for (Command *cmd : commands)
     {
-        commandMap[commandName] = cmd;
+        cmd->execute();
     }
+}
 
-    void executeCommands()
-    {
-        for (Command *cmd : commands)
-        {
-            cmd->execute();
-        }
-    }
-
-    void executeCommand(string commandName)
-    {
-        commandMap[commandName]->execute();
-    }
-
-};
+void CommandInvoker::executeCommand(string commandName)
+{
+    commandMap[commandName]->execute();
+}
