@@ -20,7 +20,7 @@ configure_file(config.h.in "${PROJECT_BINARY_DIR}/include/config.h")
 # Adding libraries
 add_library(module ./src/module.cpp)
 add_library(ui ./src/ui.cpp)
-add_library(command ./src/command_cli.cpp)
+add_library(command_cli ./src/command_cli.cpp)
 
 # Adding subdirectories
 # add_subdirectory(src)
