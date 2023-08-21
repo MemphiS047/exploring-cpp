@@ -3,6 +3,7 @@
 main
 CMakeCache.txt
 cmake_install.cmake
+/build
 
 # Ignore TODO
 TODO.md

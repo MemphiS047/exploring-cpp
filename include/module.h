@@ -60,6 +60,8 @@ private:
     string moduleCreationDate;
     string moduleLastModifiedDate;
 
+    
+
     // Module dynamic data
     vector<Module> mountedModules;
 
