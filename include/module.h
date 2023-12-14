@@ -47,6 +47,7 @@ public:
     void setModuleID(string moduleID);
     void setModuleCreationDate(string moduleCreationDate);
     void setModuleLastModifiedDate(string moduleLastModifiedDate);
+    void setModuleOSName(string moduleOSName);
 
 private:
     // Module static meta-data
@@ -59,7 +60,7 @@ private:
     string moduleCompileInstruction;
     string moduleCreationDate;
     string moduleLastModifiedDate;
-
+    string moduleOSName;
     
 
     // Module dynamic data

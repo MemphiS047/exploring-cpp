@@ -7,73 +7,116 @@
 #include <vector>
 #include <fstream>
 #include <iterator>
+#include <unordered_map>
+
+#include <ctime>
 
 using namespace std;
 using namespace filesystem;
 
 Command::Command(Module *module) : module(module) {}
-
 Command::~Command() {}
 
-CreateModuleCommand::CreateModuleCommand(Module *module) : Command(module) {}
+CreateModuleCommand::CreateModuleCommand(Module *module) : Command(module) {};
+ListModulesCommand::ListModulesCommand(Module *module) : Command(module) {};
 
+
+// Using macros obtains OS related information at compile time, provided by the compilar
+string CreateModuleCommand::getOSName()
+{
+#ifdef _WIN32
+    return "Windows 32-bit";
+#elif _WIN64
+    return "Windows 64-bit";
+#elif __APPLE__ || __MACH__
+    return "Mac OSX";
+#elif __linux__
+    return "Linux";
+#elif __FreeBSD__
+    return "FreeBSD";
+#elif __unix || __unix__
+    return "Unix";
+#else
+    return "Other";
+#endif
+}
+
+
+// Collects system related information such as, system time, OS version, location etc.
+void CreateModuleCommand::collectSystemInformation()
+{
+    // Get local time
+    time_t epoch = time(0);
+    printf("%s", asctime(localtime(&epoch)));
+    module->setModuleCreationDate(asctime(localtime((&epoch))));
+
+    // Get OS
+    cout << getOSName() << endl;
+    module->setModuleOSName(getOSName());
+}
+
+
+
+// Collects necessary module information for initialization of the module such as name of the module
+// description of the module etc.
+void CreateModuleCommand::collectModuleInformation() {}
+
+// Creates a module instance given the required fields
 void CreateModuleCommand::execute()
 {
-    time_t curr_t;
-    time(&curr_t);
-    struct tm *local_time = localtime(&curr_t);
-    string timestamp = to_string(local_time->tm_year + 1900) +
-                       to_string(local_time->tm_mon + 1) +
-                       to_string(local_time->tm_mday);
+    // Step 1: Collect system information and necessary module information from user
+    collectSystemInformation();
 
-    string moduleName;
-    string moduleDescription;
-    string moduleAuthor;
-    string moduleSourceCodePath;
+//    string moduleName;
+//    string moduleDescription;
+//    string moduleAuthor;
+//    string moduleSourceCodePath;
+//
+//     cout << "Creating a new project..." << endl;
+//
+//     cout << "Enter module name: ";
+//     cin >> moduleName;
+//
+//     cout << "Enter module description: ";
+//     cin >> moduleDescription;
+//
+//     cout << "Enter module author: ";
+//     cin >> moduleAuthor;
+//
+//     Set default properties
+//     module->setName(moduleName);
+//     module->setModuleDescription(moduleDescription);
+//     module->setModuleAuthor(moduleAuthor);
+//     module->setModuleID(module->generateModuleID());
+//     module->setModuleVersion("v0.0");
+//     module->setModuleCreationDate(timestamp);
+//     module->setModuleLastModifiedDate(timestamp);
+//     cout << "Module instance is created...." << endl;
 
-    cout << "Creating a new project..." << endl;
+    // Step 2: Source file validation
+//    cout << "Enter file path (only gzip or zip accepted!!): ";
+//    cin >> moduleSourceCodePath;
+//
+//    path p(moduleSourceCodePath);
+//    string fileExtension = p.extension();
+//
+//    if(fileExtension != ".zip" && fileExtension != ".gz") {
+//        cout << "File extension is not supported use either .gz or .zip" << endl;
+//        return;
+//    }
 
-    cout << "Enter module name: ";
-    cin >> moduleName;
+    // Step 3: Load source code and automate given tasks from the config file
 
-    cout << "Enter module description: ";
-    cin >> moduleDescription;
+    // Step 4: Do a sanity check
 
-    cout << "Enter module author: ";
-    cin >> moduleAuthor;
+    // Step 5: If everything is verified and working robust, through sanity check, then load the module to
+    // module catalogue, by also preserving the data produced through sanity check (benchmarking, complexity analysis,
+    // program correctness)
 
-    // Set default properties
-    module->setName(moduleName);
-    module->setModuleDescription(moduleDescription);
-    module->setModuleAuthor(moduleAuthor);
-    module->setModuleID(module->generateModuleID());
-    module->setModuleVersion("v0.0");
-    module->setModuleCreationDate(timestamp);
-    module->setModuleLastModifiedDate(timestamp);
-    cout << "Module instance is created...." << endl;
-
-    cout << "Enter file path: ";
-    cin >> moduleSourceCodePath;
-
-    // Check the type of provided files for registering modules
-    vector<string> magic_bytes = {
-        "\x50\x4B\x03\x04",
-        "\x1F\x8B",
-        "\x75\x73\x74\x61\x72",
-        "\x75\x73\x74\x61\x72",
-        "\x52\x61\x72\x21\x1A\x07\x00",
-        "\x42\x5A\x68"
-    };
-
-    char buffer[100];
-    ifstream sourceFile (moduleDescription, ios::binary);
-    sourceFile.read(buffer, 100);
-    for (int i = 0; i < 100; i++)
-    {
-        cout << buffer[i];
-    }
-    cout << endl;    
 }
+
+// List related modules using the protocol Buffer
+void ListModulesCommand::execute(){};
 
 // Command Invoker
 void CommandInvoker::addCommand(string commandName, Command *cmd)

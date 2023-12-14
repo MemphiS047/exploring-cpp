@@ -67,6 +67,7 @@ void Module::printModuleInfo() {
 }
 
 // Set functions
+void Module::setModuleOSName(std::string moduleOSName) { this->moduleOSName = moduleOSName; }
 void Module::setName(string name) { this->name = name; }
 void Module::setModuleID(string moduleID) { this->moduleID = moduleID; }
 void Module::setModuleDescription(string moduleDescription) { this->moduleDescription = moduleDescription; }

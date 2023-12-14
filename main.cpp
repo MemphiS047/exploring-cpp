@@ -7,25 +7,27 @@
 #include <iostream>
 
 int main() {
-    // Module module("Bubble Sort Algorithm");
-    // module.printModuleInfo();
-    
-    Module module;
-    // Create command objects
 
+    cout << "[+] Starting program ..." << endl;
+
+    Module module("Bubble Sort Algorithm");
+//     module.printModuleInfo();
+
+
+    // Create command objects
     Command *createModuleCommand = new CreateModuleCommand(&module);
 
     // Create invoker
     CommandInvoker invoker;
-    invoker.addCommand("createproject", createModuleCommand);
+    invoker.addCommand("createmodule", createModuleCommand);
 
     // Execute commands
-    invoker.executeCommand("createproject");
+    invoker.executeCommand("createmodule");
 
-    // Print module info
-    module.printModuleInfo();
-
-    // Clean up
-    delete createModuleCommand;
+//    // Print module info
+//    // module.printModuleInfo();
+//
+//    // Clean up
+//    delete createModuleCommand;
     return 0;
 }

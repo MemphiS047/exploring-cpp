@@ -6,6 +6,9 @@
 
 using namespace std;
 
+// TODO; Later on after completed writing the general logic of Command class and related subclasses, proceed to
+// TODO; complete the integration of command lifetime (as described in the documentation) within the Command class
+// TODO; rather then, explicitly writing that logic in each related subclasses
 class Command
 {
 protected:
@@ -24,6 +27,27 @@ class CreateModuleCommand : public Command
 {
 public:
     CreateModuleCommand(Module *module);
+    void execute() override;
+
+    // Initialization phase
+    void collectSystemInformation();
+    void collectModuleInformation();
+    string getOSName();
+
+    // Completion phase
+    void loadSourceCode();
+    void doComplexityAnalysis();
+    void doSanityCheck();
+
+    // Operation methods
+    void loadModuleToCatalogue();
+
+};
+
+class ListModulesCommand : public Command
+{
+public:
+    ListModulesCommand(Module *module);
     void execute() override;
 };
 
@@ -47,6 +71,7 @@ class AddModuleFilesCommand : public Command
 
 };
 
+// Class or data structure required to execute commands, store command related content at runtime
 class CommandInvoker
 {
 private:
