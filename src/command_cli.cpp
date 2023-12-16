@@ -21,58 +21,57 @@ CreateModuleCommand::CreateModuleCommand(Module *module) : Command(module) {};
 ListModulesCommand::ListModulesCommand(Module *module) : Command(module) {};
 
 
-// Using macros obtains OS related information at compile time, provided by the compilar
-string CreateModuleCommand::getOSName()
-{
-#ifdef _WIN32
-    return "Windows 32-bit";
-#elif _WIN64
-    return "Windows 64-bit";
-#elif __APPLE__ || __MACH__
-    return "Mac OSX";
-#elif __linux__
-    return "Linux";
-#elif __FreeBSD__
-    return "FreeBSD";
-#elif __unix || __unix__
-    return "Unix";
-#else
-    return "Other";
-#endif
-}
-
 
 // Collects system related information such as, system time, OS version, location etc.
-void CreateModuleCommand::collectSystemInformation()
-{
-    // Get local time
-    time_t epoch = time(0);
-    printf("%s", asctime(localtime(&epoch)));
-    module->setModuleCreationDate(asctime(localtime((&epoch))));
-
-    // Get OS
-    cout << getOSName() << endl;
-    module->setModuleOSName(getOSName());
-}
-
-
+//void CreateModuleCommand::collectSystemInformation()
+//{
+//    // Get local time
+//    time_t epoch = time(0);
+//    printf("%s", asctime(localtime(&epoch)));
+//    module->setModuleCreationDate(asctime(localtime((&epoch))));
+//
+//    // Get OS
+//    cout << getOSName() << endl;
+//    module->setModuleOSName(getOSName());
+//}
 
 // Collects necessary module information for initialization of the module such as name of the module
 // description of the module etc.
-void CreateModuleCommand::collectModuleInformation() {}
+void CreateModuleCommand::collectModuleInformation()
+{
+    string userGivenModuleName;
+    string userGivenModuleDescription;
+    string generatedModuleID;
+
+    // Get the module name it is mandatory to create a module
+    cout << "Name your module: " << endl;
+    cin >> userGivenModuleName;
+    module->setModuleName(userGivenModuleName);
+
+    // Get the description from the user it's optional
+    cout << "Give a description (optional): " << endl;
+    cin >> userGivenModuleDescription;
+    module->setModuleDescription(userGivenModuleDescription);
+
+    // TODO;
+    // Assigned ID must be unique to each created module so search for unique ID generation algorithms and implement
+    // it somewhere else, for temporarily assign static IDs with the modules
+    module->setModuleID("#ID-TEMP");
+    
+}
 
 // Creates a module instance given the required fields
 void CreateModuleCommand::execute()
 {
     // Step 1: Collect system information and necessary module information from user
-    collectSystemInformation();
+//    collectSystemInformation();
 
 //    string moduleName;
 //    string moduleDescription;
 //    string moduleAuthor;
 //    string moduleSourceCodePath;
 //
-//     cout << "Creating a new project..." << endl;
+     cout << "Creating a new project..." << endl;
 //
 //     cout << "Enter module name: ";
 //     cin >> moduleName;
@@ -84,7 +83,7 @@ void CreateModuleCommand::execute()
 //     cin >> moduleAuthor;
 //
 //     Set default properties
-//     module->setName(moduleName);
+//     module->setModuleName(moduleName);
 //     module->setModuleDescription(moduleDescription);
 //     module->setModuleAuthor(moduleAuthor);
 //     module->setModuleID(module->generateModuleID());

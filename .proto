@@ -1,5 +1,5 @@
-// TODO; need to re-comment with more precise and clear explanation on the structures on what are they
-// TODO; why they are needed.
+// TODO
+// Need to re-comment with more precise and clear explanation on the structures on what are they why they are needed.
 syntax = "proto2";
 
 package modulestruct;

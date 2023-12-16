@@ -11,7 +11,7 @@ project(exploringcpp)
 # Add executable
 add_executable(main main.cpp)
 
-# Specfiying include directories
+# Specifying include directories
 target_include_directories(main PUBLIC "${PROJECT_BINARY_DIR}")
 
 # Configuration file
@@ -23,7 +23,7 @@ add_library(ui ./src/ui.cpp)
 add_library(command_cli ./src/command_cli.cpp)
 add_library(utils ./src/utils.cpp)
 
-# Specfiying include directories
+# Specifying include directories
 target_include_directories(module PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include") 
 target_include_directories(ui PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")     
 target_include_directories(command_cli PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/include")  

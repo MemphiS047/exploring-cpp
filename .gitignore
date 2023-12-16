@@ -5,7 +5,7 @@ CMakeCache.txt
 cmake_install.cmake
 /build
 
-# Ignore TODO
+# Ignore things to do
 TODO.md
 
 # Ignoring .env files

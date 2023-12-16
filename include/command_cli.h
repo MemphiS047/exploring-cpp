@@ -6,9 +6,9 @@
 
 using namespace std;
 
-// TODO; Later on after completed writing the general logic of Command class and related subclasses, proceed to
-// TODO; complete the integration of command lifetime (as described in the documentation) within the Command class
-// TODO; rather then, explicitly writing that logic in each related subclasses
+// TODO;
+// Later on after completed writing the general logic of Command class and related subclasses, proceed to rather then, explicitly writing
+// that logic in each related subclasses
 class Command
 {
 protected:
