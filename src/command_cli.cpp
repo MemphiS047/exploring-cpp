@@ -23,17 +23,7 @@ ListModulesCommand::ListModulesCommand(Module *module) : Command(module) {};
 
 
 // Collects system related information such as, system time, OS version, location etc.
-//void CreateModuleCommand::collectSystemInformation()
-//{
-//    // Get local time
-//    time_t epoch = time(0);
-//    printf("%s", asctime(localtime(&epoch)));
-//    module->setModuleCreationDate(asctime(localtime((&epoch))));
-//
-//    // Get OS
-//    cout << getOSName() << endl;
-//    module->setModuleOSName(getOSName());
-//}
+void CreateModuleCommand::collectSystemInformation() {};
 
 // Collects necessary module information for initialization of the module such as name of the module
 // description of the module etc.
@@ -57,60 +47,33 @@ void CreateModuleCommand::collectModuleInformation()
     // Assigned ID must be unique to each created module so search for unique ID generation algorithms and implement
     // it somewhere else, for temporarily assign static IDs with the modules
     module->setModuleID("#ID-TEMP");
-    
+
+}
+
+void CreateModuleCommand::loadSourceCode()
+{
+
 }
 
 // Creates a module instance given the required fields
 void CreateModuleCommand::execute()
 {
-    // Step 1: Collect system information and necessary module information from user
-//    collectSystemInformation();
+    // Initialization phase
+    collectSystemInformation();
+    collectModuleInformation();
 
-//    string moduleName;
-//    string moduleDescription;
-//    string moduleAuthor;
-//    string moduleSourceCodePath;
-//
-     cout << "Creating a new project..." << endl;
-//
-//     cout << "Enter module name: ";
-//     cin >> moduleName;
-//
-//     cout << "Enter module description: ";
-//     cin >> moduleDescription;
-//
-//     cout << "Enter module author: ";
-//     cin >> moduleAuthor;
-//
-//     Set default properties
-//     module->setModuleName(moduleName);
-//     module->setModuleDescription(moduleDescription);
-//     module->setModuleAuthor(moduleAuthor);
-//     module->setModuleID(module->generateModuleID());
-//     module->setModuleVersion("v0.0");
-//     module->setModuleCreationDate(timestamp);
-//     module->setModuleLastModifiedDate(timestamp);
-//     cout << "Module instance is created...." << endl;
+    // Processing phase
+        // - run following validity test; integrity check, directory structure check and file type check
+        // - run the given configuration on the provided source code
+        // - if compiled/executed successfully then load the given source code
+        // - once loaded do sanity checks and testing of the module (benchmarking, complexity analysis,
+        //   program correctness
 
-    // Step 2: Source file validation
-//    cout << "Enter file path (only gzip or zip accepted!!): ";
-//    cin >> moduleSourceCodePath;
-//
-//    path p(moduleSourceCodePath);
-//    string fileExtension = p.extension();
-//
-//    if(fileExtension != ".zip" && fileExtension != ".gz") {
-//        cout << "File extension is not supported use either .gz or .zip" << endl;
-//        return;
-//    }
 
-    // Step 3: Load source code and automate given tasks from the config file
-
-    // Step 4: Do a sanity check
-
-    // Step 5: If everything is verified and working robust, through sanity check, then load the module to
-    // module catalogue, by also preserving the data produced through sanity check (benchmarking, complexity analysis,
-    // program correctness)
+    // Completion phase
+        // - collect all the logs, data generated from the command on processing phase and store it in related places
+        //   and save it to model catalogue with it.
+    loadSourceCode();
 
 }
 

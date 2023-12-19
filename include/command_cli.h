@@ -32,16 +32,17 @@ public:
     // Initialization phase
     void collectSystemInformation();
     void collectModuleInformation();
-    string getOSName();
 
-    // Completion phase
+    // Processing phase
     void loadSourceCode();
     void doComplexityAnalysis();
     void doSanityCheck();
 
-    // Operation methods
+    // Completion phase
+    // TODO;
+    // Later on runModule() method could be moved to it's individual Command subclass
     void loadModuleToCatalogue();
-
+    void runModule();
 };
 
 class ListModulesCommand : public Command

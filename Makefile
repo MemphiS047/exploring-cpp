@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named config_handler
+
+# Build rule for target.
+config_handler: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 config_handler
+.PHONY : config_handler
+
+# fast build rule for target.
+config_handler/fast:
+	$(MAKE) -f CMakeFiles/config_handler.dir/build.make CMakeFiles/config_handler.dir/build
+.PHONY : config_handler/fast
+
+#=============================================================================
 # Target rules for targets named utils
 
 # Build rule for target.
@@ -229,6 +242,33 @@ src/command_cli.cpp.s:
 	$(MAKE) -f CMakeFiles/command_cli.dir/build.make CMakeFiles/command_cli.dir/src/command_cli.cpp.s
 .PHONY : src/command_cli.cpp.s
 
+src/config_handler.o: src/config_handler.cpp.o
+
+.PHONY : src/config_handler.o
+
+# target to build an object file
+src/config_handler.cpp.o:
+	$(MAKE) -f CMakeFiles/config_handler.dir/build.make CMakeFiles/config_handler.dir/src/config_handler.cpp.o
+.PHONY : src/config_handler.cpp.o
+
+src/config_handler.i: src/config_handler.cpp.i
+
+.PHONY : src/config_handler.i
+
+# target to preprocess a source file
+src/config_handler.cpp.i:
+	$(MAKE) -f CMakeFiles/config_handler.dir/build.make CMakeFiles/config_handler.dir/src/config_handler.cpp.i
+.PHONY : src/config_handler.cpp.i
+
+src/config_handler.s: src/config_handler.cpp.s
+
+.PHONY : src/config_handler.s
+
+# target to generate assembly for a file
+src/config_handler.cpp.s:
+	$(MAKE) -f CMakeFiles/config_handler.dir/build.make CMakeFiles/config_handler.dir/src/config_handler.cpp.s
+.PHONY : src/config_handler.cpp.s
+
 src/module.o: src/module.cpp.o
 
 .PHONY : src/module.o
@@ -318,6 +358,7 @@ help:
 	@echo "... depend"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... config_handler"
 	@echo "... utils"
 	@echo "... command_cli"
 	@echo "... ui"
@@ -329,6 +370,9 @@ help:
 	@echo "... src/command_cli.o"
 	@echo "... src/command_cli.i"
 	@echo "... src/command_cli.s"
+	@echo "... src/config_handler.o"
+	@echo "... src/config_handler.i"
+	@echo "... src/config_handler.s"
 	@echo "... src/module.o"
 	@echo "... src/module.i"
 	@echo "... src/module.s"
